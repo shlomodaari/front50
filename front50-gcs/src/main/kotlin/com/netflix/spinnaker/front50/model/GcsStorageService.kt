@@ -131,7 +131,7 @@ class GcsStorageService(
       storage.list(bucketName, BlobListOption.prefix("$rootDirectory/"))
         .iterateAll()
         .forEach { blob ->
-          if (blob.name.endsWith("/"+ objectType.getDefaultMetadataFilename(true))) {
+          if (blob.name.endsWith(objectType.getDefaultMetadataFilename(true))) {
             val objectKey = getObjectKey(blob, rootDirectory, objectType.getDefaultMetadataFilename(true))
             if (objectKey != null) {
               results.put(objectKey, blob.updateTime)
